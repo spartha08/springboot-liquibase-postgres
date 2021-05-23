@@ -68,7 +68,7 @@ Rollback Strategy is not Straight forward. There are 2 approaches
 
 ## Running the application
 ```bash
-graldlew bootRun
+./gradlew bootRun
 ```
 This should start the SpringBoot application and complete the migrations. Log into Postgres to check if the database has been migrated.
 
