@@ -26,12 +26,13 @@ CREATE DATABASE indexer;
 ## Setting Spring Boot application
 [Spring Initializer](https://start.spring.io/) was used to create the SpringBoot project.
 ### Application Propertes
+```Liquibase``` will use these settings to connect to the migrate database.
 ```
 spring.datasource.url=jdbc:postgresql://localhost:6432/indexer
 spring.datasource.username=postgres
 spring.datasource.password=postgres
 ```
-```Liquibase``` will use these settings to connect to the migrate database . Alternatively, following properties can also be used
+Alternatively, following properties can also be used
 ```
 spring.liquibase.url=jdbc:postgresql://localhost:6432/indexer
 spring.liquibase.user=postgres
@@ -46,22 +47,27 @@ It is important to disable hibernate/JPA from generating/updating schema. This w
 ```
 spring.jpa.hibernate.ddl-auto=none
 ```
-Define the path where ```Liquibase``` will find the ChangeLog root document. Supported format include ```json, yaml and xml```. This will include all the ChangeSets (Migrations) in the DB
+Define the path where ```Liquibase``` will find the ChangeLog root document. Supported formats include ```json, yaml, sql and xml```. This will include all the ChangeSets (Migrations) in the DB
 ```
 spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.xml
 ```
-```
-logging.level.liquibase = INFO
-```
 ### Understanding Liquibase Migrations
-1. Setting up ChangeLog for Liquibase
-2. ChangeLog Format
-3. Generating ChangeLog from existing DB
-##### Using SQL for writing Migration files
-##### Rollback Strategy
+- Generating ChangeLog from an existing Database. Install ```liquibase-cli``` from [here](https://www.liquibase.org/download)
+```
+liquibase --url jdbc:postgresql:<Your-DB> --changeLogFile=db.changelog-master.xml --username=<Username> --password=<Password> generateChangeLog
+```
+- ChangeLog Format
 
-## Setting up Gradle for Liquibase
-???
+Read about ChangeLog Format from [Here](https://docs.liquibase.com/concepts/basic/changelog.html). This project uses XML and SQL to record and play migrations.
+
+#### Rollback Strategy
+Rollback Strategy is not Straight forward. There are 2 approaches
+- If DB is accessible directly
+  then use ```liquibase-cli``` OR Gradle\Maven liquibase plugin to do rollback.
+- If not, **implement a new Changeset with the rollback commands**  
+
+
 
 ## References
 - [https://www.liquibase.org/blog/3-ways-to-run-liquibase](https://www.liquibase.org/blog/3-ways-to-run-liquibase)
+- [https://docs.liquibase.com/tools-integrations/springboot/springboot.html](https://docs.liquibase.com/tools-integrations/springboot/springboot.html)
