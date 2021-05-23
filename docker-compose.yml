@@ -1,0 +1,26 @@
+version: '3'
+services:
+        db:
+                image: postgres:13
+                ports:
+                        - 6432:5432
+                env_file:
+                        - database.env
+                volumes:
+                        - ./local/db:/var/lib/postgresql/data/
+                        - ./db-init/:/docker-entrypoint-initdb.d/
+        demo:
+                build:
+                        context: ./
+                image:
+                        liquibase-demo
+                depends_on:
+                        -  db
+                command: bash -c "java -jar app.jar"
+                environment:
+                        DB_URL: jdbc:postgresql://db:5432/index
+                        DB_USER: indexer
+                        DB_PASSWORD: indexer
+                restart:
+                        on-failure
+

@@ -1,0 +1,6 @@
+SELECT 'CREATE DATABASE index' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'index')\gexec
+CREATE ROLE indexer;
+ALTER ROLE indexer WITH LOGIN;
+ALTER ROLE indexer WITH ENCRYPTED PASSWORD 'indexer';
+GRANT ALL PRIVILEGES ON DATABASE "index" TO "indexer";
+
