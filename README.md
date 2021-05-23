@@ -66,7 +66,11 @@ Rollback Strategy is not Straight forward. There are 2 approaches
   then use ```liquibase-cli``` OR Gradle\Maven liquibase plugin to do rollback.
 - If not, **implement a new Changeset with the rollback commands**  
 
-
+## Running the application
+```bash
+graldlew bootRun
+```
+This should start the SpringBoot application and complete the migrations. Log into Postgres to check if the database has been migrated.
 
 ## References
 - [https://www.liquibase.org/blog/3-ways-to-run-liquibase](https://www.liquibase.org/blog/3-ways-to-run-liquibase)
