@@ -64,7 +64,7 @@ Read about ChangeLog Format from [Here](https://docs.liquibase.com/concepts/basi
 Rollback Strategy is not Straight forward. There are 2 approaches
 - If DB is accessible directly
   then use ```liquibase-cli``` OR Gradle ```Liquibase``` plugin to do a rollback.
-- If not, **implement a new Changeset with the rollback commands**  
+- If not, **implement a new Changeset with the rollback commands**. Let the embedded ```liquibase``` complete the rollback as a changeset  
 
 ## Running the application
 ```bash
