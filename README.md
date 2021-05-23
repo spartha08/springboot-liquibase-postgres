@@ -63,7 +63,7 @@ Read about ChangeLog Format from [Here](https://docs.liquibase.com/concepts/basi
 #### Rollback Strategy
 Rollback Strategy is not Straight forward. There are 2 approaches
 - If DB is accessible directly
-  then use ```liquibase-cli``` OR Gradle\Maven liquibase plugin to do rollback.
+  then use ```liquibase-cli``` OR Gradle ```Liquibase``` plugin to do a rollback.
 - If not, **implement a new Changeset with the rollback commands**  
 
 ## Running the application
@@ -75,3 +75,4 @@ This should start the SpringBoot application and complete the migrations. Log in
 ## References
 - [https://www.liquibase.org/blog/3-ways-to-run-liquibase](https://www.liquibase.org/blog/3-ways-to-run-liquibase)
 - [https://docs.liquibase.com/tools-integrations/springboot/springboot.html](https://docs.liquibase.com/tools-integrations/springboot/springboot.html)
+- [Liquibase Gradle Plugin](https://plugins.gradle.org/plugin/org.liquibase.gradle)
