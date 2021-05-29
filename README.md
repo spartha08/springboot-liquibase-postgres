@@ -17,9 +17,14 @@ OR (Assuming that ```postgres``` is installed on the host. Suitably modify the c
 ```bash
 psql -h localhost -p 5432 -U postgres postgres
 ```
+On prompt for a password, set password as ```postgres``` (This sets the password for the postgres DB. Whatever is set should be remembered!)
 On Prompt create the new DB to be used for this demo.
 ```psql
-CREATE DATABASE indexer;
+CREATE DATABASE index;
+CREATE ROLE indexer;
+# liquibase expects a role with login capability
+ALTER ROLE indexer WITH LOGIN;
+GRANT ALL PRIVILEGES on database "index" to "indexer";
 ```
 
 
