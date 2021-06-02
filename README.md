@@ -3,7 +3,7 @@ About the setup. This is a bare minimum Springboot application. The purpose of t
 Install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Quick Run
-The application can be run as a ```docker-compose``` service. The sections that follow, more or less explain what is being done with the DB and ```liquibase``` setup on ```sprint-boot```. To quickly run
+The application can be run as a ```docker-compose``` service. The sections that follow, more or less explain what is being done with the DB and ```liquibase``` setup on ```spring-boot```. To quickly run
 ```bash
 docker-compose build
 docker-compose up [-d]
